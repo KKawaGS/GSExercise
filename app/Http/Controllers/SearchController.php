@@ -10,6 +10,10 @@ class SearchController extends Controller
 {
     public function search(Request $request) : View
     {
+        $validatedData = $request->validate([
+            'search' => ['required', 'max:255', 'regex:/^[\w ]{3,}[|][\w ]+[<>]\s*\d+\s*$/']
+        ]);
+
         return view('index');
     }
 

@@ -13,4 +13,16 @@ class Book extends Model
     {
         return $this->hasMany(Review::class);
     }
+
+    public function getReviewsByMale($condition, $value)
+    {
+        return $this->reviews->where('sex', 'm')
+            ->where('age', $condition, $value);
+    }
+
+    public function getReviewsByFemale($condition, $value)
+    {
+        return $this->reviews->where('sex', 'f')
+            ->where('age', $condition, $value);
+    }
 }

@@ -2,25 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\HelperClass\SearchRequestParser;
+use App\Http\Requests\SearchRequest;
 use App\Models\Book;
 use App\Models\Review;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
 
 class SearchController extends Controller
 {
     //search for requested book title with age restricted reviews
-    public function search(Request $request) : View
+    public function search(SearchRequest $request) : View
     {
-        $validatedData = $request->validate([
-            'search' => ['required', 'max:255', 'regex:/^[\w ]{3,}[|][\w ]+[<>]\s*\d+\s*$/']
-        ]);
-
-        //get search params from request string
-        $searchRequestParser = new SearchRequestParser($validatedData['search']);
-        $searchParams = $searchRequestParser->getData();
+        $validatedData = $request->validated();
+        $searchParams = $validatedData['search'];
 
         $booksCollection = Book::where('name', $searchParams['bookTitle'])->with('reviews')->get();
 

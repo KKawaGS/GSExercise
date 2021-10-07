@@ -13,7 +13,7 @@
                         </ul>
                     </div>
                 @endif
-                <form action="{{ route('search') }}" method="get">
+                <form action="{{ route('search') }}" method="post">
                     @csrf
                     <input type="text" name="search" value="{{ old('search') }}">
                     <button type="submit">Search</button>

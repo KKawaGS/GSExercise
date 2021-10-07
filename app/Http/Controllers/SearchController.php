@@ -4,9 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\SearchRequest;
 use App\Http\Services\SearchService;
-use App\Models\Book;
-use App\Models\Review;
-use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
 
 class SearchController extends Controller

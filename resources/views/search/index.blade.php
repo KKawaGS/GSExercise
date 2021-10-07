@@ -19,8 +19,8 @@
                     <td>{{ $data['bookTitle'] }}</td>
                     <td>{{ round($data['compatibility'], 2) . " %"}}</td>
                     <td>{{ $data['bookDate'] }}</td>
-                    <td>{{ round($data['avgMaleReviewAge'], 2) }}</td>
                     <td>{{ round($data['avgFemaleReviewAge'], 2) }}</td>
+                    <td>{{ round($data['avgMaleReviewAge'], 2) }}</td>
                 </tr>
             @empty
                 <tr>
@@ -29,6 +29,6 @@
             @endforelse
             </tbody>
         </table>
-        <a class="btn btn-outline-secondary" href="{{ url()->previous() }}">Back to search</a>
+        <a class="btn btn-outline-secondary" href="{{ route('search') }}">Back to search</a>
     </div>
 @stop

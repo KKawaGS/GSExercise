@@ -13,5 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [\App\Http\Controllers\SearchController::class, 'index'])->name('index');
-Route::get('/search', [\App\Http\Controllers\SearchController::class, 'search'])->name('search');
+Route::get('/', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/search', [\App\Http\Controllers\SearchController::class, 'index'])->name('index');
+Route::post('/search', [\App\Http\Controllers\SearchController::class, 'search'])->name('search');

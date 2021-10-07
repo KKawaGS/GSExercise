@@ -41,7 +41,7 @@ class SearchController extends Controller
                 $avgFemaleReviewAge = $book->getReviewsByFemale($searchParams['condition'], $searchParams['propertyValue'])->avg('age');
                 $bookTitle = $book->name;
                 $bookDate = $book->book_date;
-                $compatibility = '100 %';
+                $compatibility = 100;
 
                 $statData[] = compact(
                     'bookTitle',
@@ -63,16 +63,16 @@ class SearchController extends Controller
 
         }
 
-        return view('index', $statData);
+        return view('search.index', ['statData'=>$statData]);
     }
 
     public function index() : View
     {
-        return view('index');
+        return view('search.search');
     }
 
     //format data from the db query to match $statData format
-    private function formatReviewsData($reviews, $requestedBookTitle)
+    private function formatReviewsData($reviews, $requestedBookTitle) : array
     {
         $statData = [];
         foreach ($reviews as $review){
